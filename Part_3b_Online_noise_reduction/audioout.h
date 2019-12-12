@@ -4,7 +4,6 @@
 #include <memory>
 #include "udpserver.h"
 #include <QtMultimedia>
-#include "wavfile.h"
 
 class AudioOUT : public QObject
 {

@@ -11,7 +11,6 @@
 #include <QObject>
 #include <QScopedPointer>
 #include <QIODevice>
-#include "wavfile.h"
 
 #include "udpclient.h"
 
