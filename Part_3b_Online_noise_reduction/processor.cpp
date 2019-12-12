@@ -36,11 +36,11 @@ void Processor::processData(const std::vector<double> newData)
             sig_s[k] = calculateSig_s(k, fft1[k]);
         }
 
-        // Calculate Single Channel Enhancement
+//        // Calculate Single Channel Enhancement
 //        if (sig_s[k]+sig_n[k] == 0) {
-//            //qDebug() << "IF";
+//            qDebug() << "IF";
 //        } else if (std::isnan(sig_n[k]) || std::isnan(sig_s[k]) || std::isinf(sig_n[k]) || std::isinf(sig_s[k])) {
-//            //qDebug() << "ELSE IF";
+//            qDebug() << "ELSE IF";
 //        }
         GainFactor[k] = sig_s[k]/(sig_s[k]+sig_n[k]);
         fftOutput[k] = GainFactor[k] * fft1[k];
@@ -91,13 +91,13 @@ void Processor::convertData(QByteArray data)
 
     if (bufferIndex == -1) {
         // no-op - the buffer needs to have at least two samples
+        bufferIndex++;
     } else if (bufferIndex < NOISE_FRAMES) {
         initSPP(buffer, static_cast<unsigned int>(bufferIndex));
+        bufferIndex++;
     } else {
         processData(buffer);
     }
-
-    bufferIndex++;
 }
 
 double Processor::calculateSig_s(unsigned int k, std::complex<double> newSample)
@@ -108,11 +108,11 @@ double Processor::calculateSig_s(unsigned int k, std::complex<double> newSample)
      */
     double sig = std::max((beta_speech*(pow(sig_s[k],2)) + (1-beta_speech)*(newSample*std::conj(newSample) - sig_n[k])).real(), xi_min*sig_n[k]);
 
-    //qDebug() << "sig_s(" << k << "):" << sig_s[k] << " -> " << sig;
+    // qDebug() << "sig_s(" << k << "):" << sig_s[k] << " -> " << sig;
 
 //    if (std::isinf(sig))
 //    {
-//        //qDebug() << "Infinite";
+//        qDebug() << "Infinity";
 //    }
 
     return sig;
@@ -178,8 +178,8 @@ std::vector<std::complex<double>> Processor::fftTransform(std::vector<double> ne
     for(unsigned int i = 0; i < N_FFT; i++)
     {
         data[i] = newData[i] * pow(hannWin[i], hannWinExponent);
-        //if (data[i] > 1)
-            //qDebug() << "data[" << i <<"] " << data[i];
+//        if (data[i] > 1)
+//            qDebug() << "data[" << i <<"] " << data[i];
     }
 
     xsignal.setcontent(N_FFT, data);
@@ -190,8 +190,8 @@ std::vector<std::complex<double>> Processor::fftTransform(std::vector<double> ne
     {
         std::complex<double> res(h->x, h->y);
         outData[i]= res;
-        //if (outData[i].real() > 1 || outData[i].imag() > 1)
-            //qDebug() << "outData";
+//        if (outData[i].real() > 1 || outData[i].imag() > 1)
+//            qDebug() << "outData";
         h++;
     }
 

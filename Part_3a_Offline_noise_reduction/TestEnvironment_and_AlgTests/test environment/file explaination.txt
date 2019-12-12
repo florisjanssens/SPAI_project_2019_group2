@@ -1,0 +1,9 @@
+1dB_channelX: noise+speech signal of channel X, SNR = 1dB
+3dB_channelX: noise+speech signal of channel X, SNR = 3dB
+7dB_channelX: noise+speech signal of channel X, SNR = 7dB
+
+noise1dB_channelX: noise signal of channel X, SNR = 1dB
+noise3dB_channelX: noise signal of channel X, SNR = 3dB
+noise7dB_channelX: noise signal of channel X, SNR = 7dB
+
+speech_channelX: speech signal of channel X.

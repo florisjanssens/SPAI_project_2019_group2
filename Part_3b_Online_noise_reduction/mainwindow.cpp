@@ -140,6 +140,7 @@ void MainWindow::removeClient(const QHostAddress &peerAddress)
         // Check if the user data is the address of the sender to be removed
         if (item->data(Qt::UserRole) == peerAddress.toString()) {
             // Remove the sender
+            if (peerAddress == selectedSender) selectedSender = QHostAddress::Null;
             delete ui->listWidget->takeItem(i);
             break; // Stop the loop
         }
@@ -230,10 +231,12 @@ void MainWindow::on_serverBackButton_clicked()
     senderHandler.reset();
     audioOut.reset();
     server.reset();
+    processor.reset();
     selectedSender = QHostAddress::Null;
     ui->listWidget->clear();
     ui->numClientsLabel->setText("0");
     ui->comboBox->clear();
+    processorThread.exit();
 }
 
 void MainWindow::on_clientBackButton_clicked()

@@ -140,6 +140,7 @@ void MainWindow::removeClient(const QHostAddress &peerAddress)
         // Check if the user data is the address of the sender to be removed
         if (item->data(Qt::UserRole) == peerAddress.toString()) {
             // Remove the sender
+            if (peerAddress == selectedSender) selectedSender = QHostAddress::Null;
             delete ui->listWidget->takeItem(i);
             break; // Stop the loop
         }
