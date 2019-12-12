@@ -84,10 +84,9 @@ for l=2:N_frames
               % update noise estimation based on SPP
               alpha_temp = alpha_n + (1-alpha_n)*SPP(k,l);
               sig_n(k,l) = alpha_temp*sig_n(k,l-1) +(1-alpha_temp)*(y_noise_stft(k,l,e_index)*conj(y_noise_stft(k,l,e_index))); 
-        
+              sig_s(k,l) = Xi_min*sig_n(k,l);
         else   % Speech frame 
             sig_n(k,l) = sig_n(k,l-1);
-            
             % Decision-Directed Approach for speech estimate
             sig_s(k,l) = max((beta_s* S_mc_stft(k,l-1)) + ...
                         (1-beta_s)*((y_noise_stft(k,l,e_index)*conj(y_noise_stft(k,l,e_index)))- sig_n(k,l)), Xi_min*sig_n(k,l));
