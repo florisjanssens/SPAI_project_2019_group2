@@ -11,7 +11,7 @@ UDPClient::UDPClient(const QHostAddress &serverAddress, const quint16 serverPort
 UDPClient::UDPClient():
     serverAddress{QHostAddress::Null}, serverPort{0}, maxDatagramSize{512}, udpSocket{std::make_shared<QUdpSocket>(this)}
 {
-    qDebug() << "In constructor: serverPort = " << serverPort << " while maxDatagramSize = " << maxDatagramSize;
+    //qDebug() << "In constructor: serverPort = " << serverPort << " while maxDatagramSize = " << maxDatagramSize;
 }
 
 // Destructor, closes the socket
@@ -35,7 +35,7 @@ bool UDPClient::sendDatagram(const QByteArray &datagram, const QHostAddress &des
 {
     if (datagram.isEmpty())
     {
-        qDebug() << "Datagram is empty.";
+        //qDebug() << "Datagram is empty.";
         emit warningMessage("Tried to send empty datagram");
         return false;
     }
@@ -43,7 +43,7 @@ bool UDPClient::sendDatagram(const QByteArray &datagram, const QHostAddress &des
     // maxDatagramSize is 512 bytes here. Look in udpclient.h for reasoning.
     if (datagram.size() > maxDatagramSize)
     {
-        qDebug() << "Datagram size: " << datagram.size() << " while maxDatagramSize = " << maxDatagramSize;
+        //qDebug() << "Datagram size: " << datagram.size() << " while maxDatagramSize = " << maxDatagramSize;
         emit warningMessage("Datagram exceeds maxDatagramSize of " + QString::number(maxDatagramSize) + " bytes");
         return false;
     }
@@ -51,12 +51,12 @@ bool UDPClient::sendDatagram(const QByteArray &datagram, const QHostAddress &des
     qint64 ret = udpSocket->writeDatagram(datagram, destServer, destPort);
     if (ret < 0)
     {
-        qDebug() << "Ret: " << ret;
+        //qDebug() << "Ret: " << ret;
         emit warningMessage(tr("Failed to send datagram: ") + " " + udpSocket->errorString());
         return false;
     }
 
-    qDebug() << "sendDatagram OK";
+    //qDebug() << "sendDatagram OK";
     return true;
 }
 

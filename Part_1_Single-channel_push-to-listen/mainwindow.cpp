@@ -72,7 +72,7 @@ void MainWindow::on_speakButton_clicked()
  */
 void MainWindow::showNotificationMessage(const QString &message)
 {
-    qDebug() << "Notification: " << message;
+    //qDebug() << "Notification: " << message;
     ui->labelNotification->setText("Error: \n" + message);
     ui->stackedWidget->setCurrentIndex(2);
 }

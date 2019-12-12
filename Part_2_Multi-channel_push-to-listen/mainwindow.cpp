@@ -79,7 +79,7 @@ void MainWindow::on_speakButton_clicked()
  */
 void MainWindow::showNotificationMessage(const QString &message)
 {
-    qDebug() << "Notification: " << message;
+    //qDebug() << "Notification: " << message;
     ui->labelNotification->setText("Error: \n" + message);
     ui->stackedWidget->setCurrentIndex(2);
 }
@@ -174,7 +174,7 @@ void MainWindow::checkAndPlayMessage(const QHostAddress &peerAddress,
     if (selectedSender == peerAddress)
     {
         // send this into a buffer
-        qDebug() << datagram.size();
+        //qDebug() << datagram.size();
         audioOut->playMessage(datagram);
     } else {
 //        // send this into a buffer (ONLY IF MULTI-CHANNEL, don't really need to do anything with this now)

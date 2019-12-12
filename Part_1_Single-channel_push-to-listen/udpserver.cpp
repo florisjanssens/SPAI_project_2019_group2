@@ -93,7 +93,7 @@ void UDPServer::readyRead()
 
     // Emit the datagramReceived signal on successful  read.
     emit datagramReceived(peerAddress, peerPort, datagram);
-    qDebug() << "Datagram received";
+    //qDebug() << "Datagram received";
 }
 
 // Some getters
