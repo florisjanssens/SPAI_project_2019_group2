@@ -1,7 +1,7 @@
-The sampling rate in our app was originally 8 kHz but the jury also liked to hear a higher frequency.
+The sampling rate in our app was originally 8 kHz but the jury also liked to hear a higher frequency. This means the demo was partly done twice.
 Therefore, you can find a folder with audio files recorded during the demo for 8 kHz and 22.05 kHz each.
 
-Most of the files inside follow the name conventions of the evaluation document but there are some exceptions because of the switching around in the app during the demo (however, these exceptions were discussed during the demo).
+Most of the files inside follow the name conventions of the evaluation document but there are some exceptions because of the switching around in the app during the demo to enable or disable noise reduction, causing a new file to be recorded after switching (however, these exceptions were discussed during the demo).
 
 You can find more information inside the respectable folder of each part for both sampling rates.
 
