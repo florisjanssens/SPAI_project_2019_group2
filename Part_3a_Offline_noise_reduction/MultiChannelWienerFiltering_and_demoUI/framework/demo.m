@@ -162,7 +162,7 @@ stftSPP.Tag = 'sppNoise';
 % Plot STFT-domain Enhanced signal
 stftEnhanced = findobj(f, 'Tag', 'stftEnhanced');
 axes(stftEnhanced);
-textLabel = sprintf("STFT Receiver %d signal",index);
+textLabel = sprintf("STFT Enhanced Receiver %d signal",index);
 imagesc(times_stft,N_freqs,mag2db(abs(S_mc_stft(:,:,1))), [-65, 10]); colorbar; axis xy; set(gcf,'color','w');set(gca,'Fontsize',14); xlabel('Time (s)'), ylabel('Frequency (Hz)');
 c = colorbar;
 c.Label.String = 'Amplitude (dB)';

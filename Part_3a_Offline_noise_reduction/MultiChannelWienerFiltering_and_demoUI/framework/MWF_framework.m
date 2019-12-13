@@ -119,7 +119,10 @@ for l=2:N_frames
       
         % Multi-channel coefficients
         W_mc(:,k) = mvdr(:,k)*wf(k);        
-        S_mc_stft(k,l) = W_mc(:,k)'*vec; 
+        S_mc_stft(k,l) = W_mc(:,k)'*vec;
+        if isnan(S_mc_stft(k,l)) 
+            S_mc_stft(k,l) = 0;
+        end
         if k*(fs/N_fft) >= F_Dolby
             S_mc_stft(k,l) = S_mc_stft(k,l)*G_Dolby;
         end
