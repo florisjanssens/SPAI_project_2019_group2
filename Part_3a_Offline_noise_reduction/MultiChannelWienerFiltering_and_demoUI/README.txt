@@ -6,7 +6,7 @@ Folders:
 	-	auxilary_fcns:		Contains 4 functions that are needed to compute the 
                             		noise reduction algorithm.
 	-	framework:          	Contains the demo and MWF_framework.m to execute the offline
-					noise reduction. This also contains the 
+					noise reduction. This also contains the enhanced audio files.
 Execute:
 	- 	Go in to the framework folder and write the command: demo in the console.
 	- 	A UI will open which allows you to select a receiver channel based on what is 
